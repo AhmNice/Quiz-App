@@ -55,31 +55,52 @@ function renderCurrentQuestion(selectedQuestion,questionIndex ){
     QuestionSection.textContent = selectedQuestion[questionIndex].question
 }
 const optionsID = ['A','B','C','D']
-function handleOptions(options){
-    options.forEach((option)=>{
+function handleOptions(options) {
+    options.forEach((option, index) => {
         const optionDiv = createElement(
             'div',
             {
-                className:'option rounded-md'
+                className: 'option rounded-md'
             },
             [
-                createElement('label',{className:'flex gap-5 items-center labels '},[
-                    createElement('input',{type:'radio',name:'option'},[]),
-                    createElement('div',{className: 'icon bg-gray-200  rounded-sm p-1',textContent: `${optionsID[0]}.`},
-                        []),
-                    createElement('p',{textContent: option},[])
+                createElement('label', {
+                    className: 'flex gap-5 items-center labels'
+                }, [
+                    createElement('input', {
+                        type: 'radio',
+                        name: 'option',
+                        value: option
+                    }, []),
+                    createElement('div', {
+                        className: 'icon bg-gray-200 rounded-sm p-1',
+                        textContent: `${index + 1}.`
+                    }, []),
+                    createElement('p', {
+                        textContent: option
+                    }, [])
                 ]),
             ]
-        )
-        optionDiv.addEventListener('click',()=>{
-            if(optionDiv.document.querySelector('label').checked){
-                optionDiv.classList.remove('selected')
+        );
+
+        optionDiv.addEventListener('click', () => {
+            const input = optionDiv.querySelector('input');
+            if (!input.checked) {
+                input.checked = true;
             }
-            optionDiv.classList.add('selected')
-        })
-        optionSection.appendChild(optionDiv)
-    })
+            optionDiv.classList.add('selected');
+
+            const allOptions = optionSection.querySelectorAll('.option');
+            allOptions.forEach(opt => {
+                if (opt !== optionDiv) {
+                    opt.classList.remove('selected');
+                }
+            });
+        });
+
+        optionSection.appendChild(optionDiv);
+    });
 }
+
 function fetchQuestion(){
     return new Promise((resolve, reject)=>{
         const xhr = new XMLHttpRequest();
