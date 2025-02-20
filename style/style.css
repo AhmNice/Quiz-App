@@ -1,0 +1,107 @@
+@font-face {
+    font-family: outfitRegular;
+    src: url(../fonts/Outfit-Regular.ttf);
+}
+@font-face {
+    font-family: outfitSemiBold;
+    src: url(../fonts/Outfit-SemiBold.ttf);
+}
+@font-face {
+    font-family: outfitLight;
+    src: url(../fonts/Outfit-Thin.ttf);
+}
+@font-face {
+    font-family: outfitBold;
+    src: url(../fonts/Outfit-Bold.ttf);
+}
+*{
+    font-family: outfitRegular;
+    color: white;
+    font-size: 1.2rem;
+}
+.hide{
+    display: none;
+}
+:root{
+        --cool-gray:#9A9CB2;
+        --charcoal-option: #3A4960;
+        --veronica-btn:#A529FC;
+        --charcoal-bg:#2E3949;
+}
+.wrapper{
+    background-color: var(--charcoal-bg);
+}
+.header{
+    padding:1.5rem 4.5rem;
+}
+.header p{
+    font-family: outfitBold;
+}
+.content_body{
+    background-color: var(--charcoal-bg);
+    padding:4rem 4.5rem;
+}
+.option{
+    background-color: var(--charcoal-option);
+    width: 450px;
+    padding: 0.5rem ;
+    cursor: pointer;
+}
+label{
+    cursor: pointer;
+}
+.icon img{
+    width: 24px;
+}
+.icon{
+    color: rgb(63, 63, 63);
+}
+.option.selected{
+    border: 1px solid gray;
+}
+.option p{
+    text-transform: capitalize;
+}
+.intro p{
+    font-family: outfitLight;
+    /* font-family: 200; */
+    font-size: 3rem;
+}
+.intro p span{
+    font-family: outfitBold;
+    font-size: 3rem;
+}
+input[type = 'radio']{
+   display: none;
+}
+.questionList{
+    font-family: outfitSemiBold;
+    font-size: 1.5rem;
+}
+.intructions, .info{
+    font: 1rem;
+    color: var(--cool-gray);
+    font-style: italic;
+}
+.progress{
+    width: 350px;
+    height: 10px;
+    background-color: var(--charcoal-option);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+}
+.progressbar{
+    height: 100%;
+    width: 70%;
+    padding: 4px;
+    background-color: var(--veronica-btn);
+}
+.progress.hide{
+    display: none;
+}
+.question{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}

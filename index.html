@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- <link rel="stylesheet" href="style/tailwind.min.css"> -->
+    <link rel="stylesheet" href="style/style.css">
+    <style type="text/tailwindcss">
+
+    </style>
+    <title>Quiz - FrontEnd</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <p>
+            <!-- title here -->
+            QUIZ
+          </p>
+    </div>
+
+    <div class="content_body flex gap-5 w-full h-screen ">
+        <section class="question text-veronica-btn w-full">
+            <div class="info hide">Question 4 of 6</div>
+           <div class="sectionsQuestion">
+            <div class="intro">
+                <p>Welcome to the <span>FrontEnd Quiz</span></p>
+               </div>
+               <div class="intructions">Pick a subject to begin.</div>
+           </div>
+           <div class="progress hide rounded-md">
+                <div class="progressbar rounded-sm"></div>
+           </div>
+        </section>
+
+
+        <section class="options w-full flex flex-col gap-5">
+            <div class="option rounded-md ">
+               <label for="html" class="flex gap-5 items-center labels">
+                    <input type="radio" name="option" id="html">
+                    <div class="icon bg-green-200 rounded-sm p-2">
+                        <img src="icons/icons8-code-24.png" alt="">
+                    </div>
+                 HTML
+               </label>
+            </div>
+
+            <div class="option rounded-md ">
+               <label for="css" class="flex gap-5 items-center labels">
+                    <input type="radio" name="option" id="css">
+                    <div class="icon bg-yellow-200 rounded-sm p-2">
+                        <img src="icons/icons8-css3-50.png" alt="">
+                    </div>
+                    CSS
+               </label>
+            </div>
+
+            <div class="option rounded-md p">
+               <label for="javascript" class="flex gap-5 items-center labels">
+                    <input type="radio" name="option" id="javascript">
+                    <div class="icon bg-blue-200 rounded-sm p-2">
+                        <img src="icons/icons8-javascript-50 (1).png" alt="">
+                    </div>
+                    <p>javascript</p>
+               </label>
+            </div>
+            <div class="option rounded-md ">
+               <label for="general" class="flex gap-5 items-center labels">
+                    <input type="radio" name="option" id="general">
+                    <div class="icon bg-purple-200 rounded-sm p-2">
+                        <img src="icons/icons8-accessibility-48.png" alt="">
+                    </div>
+                    <p>General Programming Knowledge</p>
+               </label>
+            </div>
+
+        </section>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
