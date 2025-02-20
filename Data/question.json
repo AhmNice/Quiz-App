@@ -1,0 +1,129 @@
+{
+    "questions": [
+      {
+        "category": "HTML",
+        "questions": [
+          {
+            "question": "What does HTML stand for?",
+            "options": ["Hyper Text Markup Language", "Hyper Transfer Markup Language", "Home Tool Markup Language", "Hyperlink Text Markup Language"],
+            "correct_answer": "Hyper Text Markup Language"
+          },
+          {
+            "question": "Which tag is used to define an unordered list in HTML?",
+            "options": ["<ul>", "<ol>", "<li>", "<list>"],
+            "correct_answer": "<ul>"
+          },
+          {
+            "question": "Which attribute is used to provide a title for a web page?",
+            "options": ["title", "name", "meta", "heading"],
+            "correct_answer": "title"
+          },
+          {
+            "question": "What is the correct HTML tag for inserting a line break?",
+            "options": ["<br>", "<hr>", "<break>", "<b>"],
+            "correct_answer": "<br>"
+          }
+        ]
+      },
+      {
+        "category": "CSS",
+        "questions": [
+          {
+            "question": "What is the correct CSS syntax to change the font size?",
+            "options": ["font-size: 12px;", "font: 12px;", "text-size: 12px;", "size-font: 12px;"],
+            "correct_answer": "font-size: 12px;"
+          },
+          {
+            "question": "Which property is used to change the background color of an element?",
+            "options": ["bgcolor", "background", "color", "background-color"],
+            "correct_answer": "background-color"
+          },
+          {
+            "question": "Which CSS property controls the text size?",
+            "options": ["font-size", "text-size", "size", "font"],
+            "correct_answer": "font-size"
+          },
+          {
+            "question": "How do you select all elements of a specific class in CSS?",
+            "options": [".classname", "#classname", "classname", ":classname"],
+            "correct_answer": ".classname"
+          }
+        ]
+      },
+      {
+        "category": "JavaScript",
+        "questions": [
+          {
+            "question": "Which of the following is used to declare a variable in JavaScript?",
+            "options": ["let", "var", "const", "All of the above"],
+            "correct_answer": "All of the above"
+          },
+          {
+            "question": "How do you write a comment in JavaScript?",
+            "options": ["// This is a comment", "<!-- This is a comment -->", "# This is a comment", "/* This is a comment */"],
+            "correct_answer": "// This is a comment"
+          },
+          {
+            "question": "What is the correct way to create a function in JavaScript?",
+            "options": ["function myFunction()", "create function myFunction()", "function: myFunction()", "def myFunction()"],
+            "correct_answer": "function myFunction()"
+          },
+          {
+            "question": "Which operator is used to assign a value to a variable in JavaScript?",
+            "options": ["=", "==", "=", "::"],
+            "correct_answer": "="
+          }
+        ]
+      },
+      {
+        "category": "React",
+        "questions": [
+          {
+            "question": "What is JSX in React?",
+            "options": ["A type of JavaScript extension", "JavaScript syntax extension for HTML", "A new library", "A React function"],
+            "correct_answer": "JavaScript syntax extension for HTML"
+          },
+          {
+            "question": "Which hook is used to add state to a functional component in React?",
+            "options": ["useState", "useEffect", "useRef", "useReducer"],
+            "correct_answer": "useState"
+          },
+          {
+            "question": "What is the purpose of 'key' in React lists?",
+            "options": ["To give elements a unique identifier", "To reference the list index", "To add a background color", "None of the above"],
+            "correct_answer": "To give elements a unique identifier"
+          },
+          {
+            "question": "Which of the following is used to pass data to a child component in React?",
+            "options": ["props", "state", "component", "setState"],
+            "correct_answer": "props"
+          }
+        ]
+      },
+      {
+        "category": "General Programming Knowledge",
+        "questions": [
+          {
+            "question": "What is an algorithm?",
+            "options": ["A step-by-step procedure for solving a problem", "A programming language", "A type of software", "A variable in programming"],
+            "correct_answer": "A step-by-step procedure for solving a problem"
+          },
+          {
+            "question": "Which of these is a common programming language for web development?",
+            "options": ["JavaScript", "C++", "Java", "Assembly"],
+            "correct_answer": "JavaScript"
+          },
+          {
+            "question": "What is the primary purpose of an IDE (Integrated Development Environment)?",
+            "options": ["To write and test code", "To store data", "To compile code only", "To manage a server"],
+            "correct_answer": "To write and test code"
+          },
+          {
+            "question": "What does the acronym SQL stand for?",
+            "options": ["Structured Query Language", "Standard Query Language", "Simple Query Language", "Syntactical Query Language"],
+            "correct_answer": "Structured Query Language"
+          }
+        ]
+      }
+    ]
+  }
