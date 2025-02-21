@@ -24,8 +24,10 @@
 }
 :root{
         --cool-gray:#9A9CB2;
+        --cool-gray2:#1b1b1d5b;
         --charcoal-option: #3A4960;
         --veronica-btn:#A529FC;
+        --veronica-btn-empty:#8749b480;
         --charcoal-bg:#2E3949;
 }
 .wrapper{
@@ -37,13 +39,16 @@
 .header p{
     font-family: outfitBold;
 }
+.header {
+    font-family: outfitBold;
+}
 .content_body{
     background-color: var(--charcoal-bg);
     padding:4rem 4.5rem;
 }
 .option{
     background-color: var(--charcoal-option);
-    width: 450px;
+    width: 550px;
     padding: 0.5rem ;
     cursor: pointer;
 }
@@ -54,10 +59,16 @@ label{
     width: 24px;
 }
 .icon{
+    width: 50px;
     color: rgb(63, 63, 63);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .option.selected{
     border: 1px solid gray;
+    transform: scale(0.9);
 }
 .option p{
     text-transform: capitalize;
@@ -93,7 +104,7 @@ input[type = 'radio']{
 }
 .progressbar{
     height: 100%;
-    width: 70%;
+    width: 0%;
     padding: 4px;
     background-color: var(--veronica-btn);
 }
@@ -104,4 +115,71 @@ input[type = 'radio']{
     display: flex;
     flex-direction: column;
     gap: 40px;
+}
+.btn{
+    width: 550px;
+}
+.next-btn{
+    padding: 0.5rem 4rem;
+    text-align: center;
+    background-color: var(--veronica-btn);
+    width: 100%;
+    cursor: pointer;
+}
+
+.next-btn.empty{
+    cursor: not-allowed;
+    background-color: var(--veronica-btn-empty);
+    color: rgba(255, 255, 255, 0.445);
+}
+.overlay{
+    background-color: var(--cool-gray2);
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+}
+.overlay div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: scaleUp 1s;
+}
+.overlay div h3{
+    font-family: outfitBold;
+    font-size: 2rem;
+    color: var(--veronica-btn);
+}
+.overlay div p{
+    font-family: outfitSemiBold;
+    font-size: 1.5rem;
+    color: var(--cool-gray);
+}
+.overlay div button{
+    padding: 0.5rem 4rem;
+    text-align: center;
+    background-color: var(--veronica-btn);
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+}
+.overlay div .close-btn{
+    background-color: white;
+    border: 2px solid var(--veronica-btn);
+    color: var(--veronica-btn);
+}
+.overlay div div{
+    display: flex;
+    flex-direction: row;
+}
+@keyframes scaleUp {
+    from{
+        transform: scale(0.5);
+    }
+    to{
+        transform: scale(1);
+    }
 }
