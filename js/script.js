@@ -2,18 +2,23 @@ const categories = document.querySelectorAll('.option');
 let questionIndex = 0;
 let questionArray;
 let id = 0
+let score = 0
+let yourAnswers = []
 categories.forEach((category)=>{
     category.addEventListener('click',(e)=>{
         e.preventDefault()
         const selected = category.textContent.trim();
         renderQuestions(selected)
+        console.log(selected)
     })
 });
 const header = document.querySelector('.header')
 const QuestionSection = document.querySelector('.sectionsQuestion')
-const optionSection = document.querySelector('.options')
+const optionSection = document.querySelector('.options-section')
 const progress = document.querySelector('.progress')
 const progressBar = document.querySelector('.progressbar')
+const nextButton = document.querySelector('.next-btn')
+const buttonDiv = document.querySelector('.btn')
 
 async function renderQuestions(selected){
 
@@ -23,6 +28,7 @@ async function renderQuestions(selected){
    const infoDiv = document.querySelector('.info')
    infoDiv.classList.remove('hide')
    progress.classList.remove('hide')
+   buttonDiv.classList.remove('hide')
 
     let questions = await fetchQuestion()
     let selectedQuestion;
@@ -34,7 +40,7 @@ async function renderQuestions(selected){
         selectedQuestion = questions.CSS;
         break
     case 'javascript':
-        selectedQuestion = questions.javaScript;
+        selectedQuestion = questions.JavaScript;
         break
     case 'General Programming Knowledge':
         selectedQuestion = questions.General_Knowledge
@@ -47,16 +53,58 @@ async function renderQuestions(selected){
     let options = selectedQuestion[questionIndex].options
     console.log(options)
     renderCurrentQuestion(selectedQuestion,questionIndex )
-    handleOptions(options)
+    const info = document.querySelector('.info')
+            info.textContent = `Question ${questionIndex+1} of ${selectedQuestion.length}`
+    const nextButton = createElement('button',
+        {className: 'next-btn empty rounded-md',textContent:'Next'},[]
+    )
+    nextButton.setAttribute('disabled',true)
+    buttonDiv.appendChild(nextButton)
+    handleOptions(options,nextButton)
     // QuestionSection.textContent = selectedQuestion.questions
+    nextButton.addEventListener('click',(e)=>{
+        e.preventDefault();
+        if (nextButton.hasAttribute('disabled')) {
+            return
+        }
+        questionIndex += 1;
+        checkAnswer(selectedQuestion,questionIndex-1)
+        if(questionIndex < selectedQuestion.length){
+             options = selectedQuestion[questionIndex].options
+            renderCurrentQuestion(selectedQuestion,questionIndex)
+            handleOptions(options,nextButton)
+            progressBar.style.width = `${(questionIndex+1)/selectedQuestion.length*100}%`
+            const info = document.querySelector('.info')
+            info.textContent = `Question ${questionIndex+1} of ${selectedQuestion.length}`
+            if(questionIndex === selectedQuestion.length-1){
+                nextButton.textContent = 'Submit'
+            }
+        nextButton.classList.add('empty')
+        }
+        else{
+            nextButton.classList.add('empty')
+            progress.classList.add('hide')
+            previewResult(score)
+            if(score >=15){
+                triggerConfetti()
+            }
+            console.log('end of questions')
+        }
+    })
 
 }
 function renderCurrentQuestion(selectedQuestion,questionIndex ){
     QuestionSection.textContent = selectedQuestion[questionIndex].question
+
 }
 const optionsID = ['A','B','C','D']
-function handleOptions(options) {
-    options.forEach((option, index) => {
+function handleOptions(options,button=null) {
+    optionSection.innerHTML='';
+    if(button){
+        button.setAttribute('disabled',true)
+        button.classList.add('empty')
+    }
+    shuffle(options).forEach((option, index) => {
         const optionDiv = createElement(
             'div',
             {
@@ -86,9 +134,13 @@ function handleOptions(options) {
             const input = optionDiv.querySelector('input');
             if (!input.checked) {
                 input.checked = true;
+                if (button) {
+                    button.removeAttribute('disabled');
+                    button.classList.remove('empty');
+                }
             }
             optionDiv.classList.add('selected');
-
+            button.classList.remove('empty')
             const allOptions = optionSection.querySelectorAll('.option');
             allOptions.forEach(opt => {
                 if (opt !== optionDiv) {
@@ -132,4 +184,60 @@ function createElement(tag, options={}, children=[]){
     });
     children.forEach((child)=> element.appendChild(child));
     return element;
+}
+function checkAnswer(selectedQuestion,questionIndex){
+    const selectedOption = optionSection.querySelector('input:checked');
+    if(selectedOption){
+        const answer = selectedOption.value;
+        const correctAnswer = selectedQuestion[questionIndex].correct_answer;
+        if(answer === correctAnswer){
+           score += 2
+           yourAnswers.push(`${questionIndex +1}: ✔️ ${answer}`)
+           console.log(yourAnswers)
+        }else{
+            yourAnswers.push(`${questionIndex +1}: ❌ ${answer}`)
+            console.log(yourAnswers)
+        }
+    }
+}
+function previewResult(score){
+    const body = document.querySelector('.wrapper');
+    const overlay = createElement(
+        'div',
+        {
+            className:'absolute overlay w-full h-screen bg-gray-200 flex items-center justify-center'
+        },
+        [
+            createElement('div',{className:'result rounded-md bg-white p-5'},[
+                createElement('h3',{className: 'text-gray-600', textContent:'Result'},[]),
+                createElement('p',{className: 'text-gray-600', textContent:`Your score is ${score} out of ${questionArray.length*2}`},[]),
+               createElement('div',{className: 'flex gap-5'},[
+                createElement('button',{textContent: 'view ', className: 'viewR-btn rounded-sm'},[]),
+                createElement('button',{textContent:'Close',className:'close-btn rounded-sm'},[])
+               ])
+            ])
+        ]
+    );
+
+    const closeButton = overlay.querySelector('.close-btn');
+    closeButton.addEventListener('click', () => {
+        overlay.remove();
+        console.log('close');
+        window.location.reload()
+    });
+    body.appendChild(overlay)
+}
+function triggerConfetti(){
+    confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 }
+    });
+}
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
