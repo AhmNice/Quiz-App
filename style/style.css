@@ -23,12 +23,12 @@
     display: none;
 }
 :root{
-        --cool-gray:#9A9CB2;
-        --cool-gray2:#1b1b1d5b;
-        --charcoal-option: #3A4960;
-        --veronica-btn:#A529FC;
-        --veronica-btn-empty:#8749b480;
-        --charcoal-bg:#2E3949;
+    --cool-gray:#9A9CB2;
+    --cool-gray2:#1b1b1d5b;
+    --charcoal-option: #3A4960;
+    --veronica-btn:#A529FC;
+    --veronica-btn-empty:#8749b480;
+    --charcoal-bg:#2E3949;
 }
 .wrapper{
     background-color: var(--charcoal-bg);
@@ -48,7 +48,8 @@
 }
 .option{
     background-color: var(--charcoal-option);
-    width: 550px;
+    width: 100%;
+    max-width: 550px;
     padding: 0.5rem ;
     cursor: pointer;
 }
@@ -75,7 +76,6 @@ label{
 }
 .intro p{
     font-family: outfitLight;
-    /* font-family: 200; */
     font-size: 3rem;
 }
 .intro p span{
@@ -95,7 +95,8 @@ input[type = 'radio']{
     font-style: italic;
 }
 .progress{
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     height: 10px;
     background-color: var(--charcoal-option);
     padding: 8px;
@@ -117,7 +118,8 @@ input[type = 'radio']{
     gap: 40px;
 }
 .btn{
-    width: 550px;
+    width: 100%;
+    max-width: 550px;
 }
 .next-btn{
     padding: 0.5rem 4rem;
@@ -138,7 +140,6 @@ input[type = 'radio']{
     top: 0;
     left: 0;
     width: 100%;
-    /* height: 100%; */
 }
 .overlay div{
     display: flex;
@@ -181,5 +182,65 @@ input[type = 'radio']{
     }
     to{
         transform: scale(1);
+    }
+}
+@media screen and (max-width: 768px) {
+    .header{
+        padding: 1rem 2rem;
+    }
+    .content_body{
+        padding: 2rem 2rem;
+        height: 100%;
+    }
+    .option{
+        width: 100%;
+    }
+    .progress{
+        width: 100%;
+    }
+    .btn{
+        width: 100%;
+    }
+    .next-btn{
+        padding: 0.5rem 2rem;
+    }
+    .overlay div h3{
+        font-size: 1.5rem;
+    }
+    .overlay div p{
+        font-size: 1rem;
+    }
+    .overlay div button{
+        padding: 0.5rem 2rem;
+    }
+}
+@media screen and (max-width: 480px) {
+    .header{
+        padding: 0.5rem 1rem;
+    }
+    .content_body{
+        padding: 1rem 1rem;
+        height: 100%;
+    }
+    .option{
+        width: 100%;
+    }
+    .progress{
+        width: 100%;
+    }
+    .btn{
+        width: 100%;
+    }
+    .next-btn{
+        padding: 0.5rem 1rem;
+    }
+    .overlay div h3{
+        font-size: 1.2rem;
+    }
+    .overlay div p{
+        font-size: 0.8rem;
+    }
+    .overlay div button{
+        padding: 0.5rem 1rem;
     }
 }
