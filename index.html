@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <!-- <link rel="stylesheet" href="style/tailwind.min.css"> -->
     <link rel="stylesheet" href="style/style.css">
     <style type="text/tailwindcss">
@@ -13,6 +14,7 @@
 </head>
 <body>
 <div class="wrapper">
+    <!-- <div class="overlay"></div> -->
     <div class="header">
         <p>
             <!-- title here -->
@@ -22,7 +24,7 @@
 
     <div class="content_body flex gap-5 w-full h-screen ">
         <section class="question text-veronica-btn w-full">
-            <div class="info hide">Question 4 of 6</div>
+            <div class="info hide">Question  of </div>
            <div class="sectionsQuestion">
             <div class="intro">
                 <p>Welcome to the <span>FrontEnd Quiz</span></p>
@@ -36,45 +38,49 @@
 
 
         <section class="options w-full flex flex-col gap-5">
-            <div class="option rounded-md ">
-               <label for="html" class="flex gap-5 items-center labels">
-                    <input type="radio" name="option" id="html">
-                    <div class="icon bg-green-200 rounded-sm p-2">
-                        <img src="icons/icons8-code-24.png" alt="">
-                    </div>
-                 HTML
-               </label>
-            </div>
+            <section class="options-section w-full flex flex-col gap-5">
+                <div class="option rounded-md ">
+                    <label for="html" class="flex gap-5 items-center labels">
+                         <input type="radio" name="option" id="html">
+                         <div class="icon bg-green-200 rounded-sm p-2">
+                             <img src="icons/icons8-code-24.png" alt="">
+                         </div>
+                      HTML
+                    </label>
+                 </div>
 
-            <div class="option rounded-md ">
-               <label for="css" class="flex gap-5 items-center labels">
-                    <input type="radio" name="option" id="css">
-                    <div class="icon bg-yellow-200 rounded-sm p-2">
-                        <img src="icons/icons8-css3-50.png" alt="">
-                    </div>
-                    CSS
-               </label>
-            </div>
+                 <div class="option rounded-md ">
+                    <label for="css" class="flex gap-5 items-center labels">
+                         <input type="radio" name="option" id="css">
+                         <div class="icon bg-yellow-200 rounded-sm p-2">
+                             <img src="icons/icons8-css3-50.png" alt="">
+                         </div>
+                         CSS
+                    </label>
+                 </div>
 
-            <div class="option rounded-md p">
-               <label for="javascript" class="flex gap-5 items-center labels">
-                    <input type="radio" name="option" id="javascript">
-                    <div class="icon bg-blue-200 rounded-sm p-2">
-                        <img src="icons/icons8-javascript-50 (1).png" alt="">
-                    </div>
-                    <p>javascript</p>
-               </label>
+                 <div class="option rounded-md p">
+                    <label for="javascript" class="flex gap-5 items-center labels">
+                         <input type="radio" name="option" id="javascript">
+                         <div class="icon bg-blue-200 rounded-sm p-2">
+                             <img src="icons/icons8-javascript-50 (1).png" alt="">
+                         </div>
+                         <p>javascript</p>
+                    </label>
+                 </div>
+                 <div class="option rounded-md ">
+                    <label for="general" class="flex gap-5 items-center labels">
+                         <input type="radio" name="option" id="general">
+                         <div class="icon bg-purple-200 rounded-sm p-2">
+                             <img src="icons/icons8-accessibility-48.png" alt="">
+                         </div>
+                         <p>General Programming Knowledge</p>
+                    </label>
+                 </div>
+            </section>
+            <div class="btn hide">
+                <!-- <button class="next-btn empty rounded-md">Next</button> -->
             </div>
-            <div class="option rounded-md ">
-               <label for="general" class="flex gap-5 items-center labels">
-                    <input type="radio" name="option" id="general">
-                    <div class="icon bg-purple-200 rounded-sm p-2">
-                        <img src="icons/icons8-accessibility-48.png" alt="">
-                    </div>
-                    <p>General Programming Knowledge</p>
-               </label>
-            </div>
-
         </section>
     </div>
 </div>
