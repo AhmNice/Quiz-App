@@ -11,7 +11,7 @@ Quiz-App is a web application that allows users to take quizzes on various topic
 - Timed quizzes
 ## Preview
 
-1. Open your browser and navigate to `https://ahmnice.github.io/Quiz-App/`.
+1. Open your browser and navigate to `https://ahmnice.github.io/Quiz-App/` or <a href='https://ahmnice.github.io/Quiz-App/'>click here</a>.
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
