@@ -184,6 +184,34 @@ input[type = 'radio']{
         transform: scale(1);
     }
 }
+.head{
+    color: #4299e1;
+    color: rgb(65, 62, 62);
+    font-family: outfitSemiBold;
+}
+.cardBody{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #4299e1;
+    font-family: outfitBold;
+}
+li{
+    list-style: none;
+    color: black;
+    font-size: 13px;
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.cardFooter button:hover{
+    background-color: var(--veronica-btn);
+    color: white;
+    transition: background-color 0.5s;
+}
+
 @media screen and (max-width: 768px) {
     .header{
         padding: 1rem 2rem;
