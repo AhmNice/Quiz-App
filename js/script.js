@@ -3,6 +3,7 @@ let questionIndex = 0;
 let questionArray;
 let id = 0
 let score = 0
+let Submit = false
 let yourAnswers = []
 categories.forEach((category)=>{
     category.addEventListener('click',(e)=>{
@@ -21,7 +22,7 @@ const nextButton = document.querySelector('.next-btn')
 const buttonDiv = document.querySelector('.btn')
 
 async function renderQuestions(selected){
-
+    timeStamp()
     header.textContent = selected
     QuestionSection.innerHTML=''
     optionSection.innerHTML=''
@@ -88,6 +89,7 @@ async function renderQuestions(selected){
             if(score >=15){
                 triggerConfetti()
             }
+            Submit = true
             console.log('end of questions')
         }
     })
@@ -195,7 +197,7 @@ function checkAnswer(selectedQuestion,questionIndex){
            yourAnswers.push(`${questionIndex +1}: ✔️ ${answer}`)
            console.log(yourAnswers)
         }else{
-            yourAnswers.push(`${questionIndex +1}: ❌ ${answer}`)
+            yourAnswers.push(`${questionIndex +1}: ❌ ${answer} - ✔️ ${correctAnswer}`)
             console.log(yourAnswers)
         }
     }
@@ -225,6 +227,10 @@ function previewResult(score){
         console.log('close');
         window.location.reload()
     });
+    const viewButton = overlay.querySelector('.viewR-btn');
+    viewButton.addEventListener('click',()=>{
+        viewResult()
+    });
     body.appendChild(overlay)
 }
 function triggerConfetti(){
@@ -240,4 +246,68 @@ function shuffle(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+}
+function timeStamp(){
+    let timeUp = false;
+    const countdownTime = new Date().getTime()+ 2 * 60 * 1000
+    let timeText = '02:00';
+    const wrapper = document.querySelector('.wrapper')
+    const timeContainer = createElement(
+        'div',
+        {className: 'absolute z-10 w-full p-2 top-0 flex justify-end'},
+        [
+            createElement('div',{className: 'card w-44 bg-white rounded-sm p-2 flex flex-col '},[
+                createElement('div',{className: 'flex head text-blue-500',textContent:'Time Left'},[]),
+                createElement('div',{className:'cardBody text-center text-blue-500', textContent:`${timeText}`},[])
+            ])
+        ]
+    )
+    wrapper.appendChild(timeContainer)
+
+    const cardBody = timeContainer.querySelector('.cardBody');
+    const x = setInterval(()=>{
+        const now = new Date().getTime();
+        const distance = countdownTime - now
+
+        const min =Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        const sec = Math.floor((distance % (1000 * 60)) / 1000);
+        timeText = `${formatTime(min)}: ${formatTime(sec)}`
+        cardBody.textContent = timeText;
+        if(distance < 0){
+            clearInterval(x);
+            cardBody.textContent = 'TIME UP';
+            timeUp = true;
+            previewResult(score)
+        }
+        if(Submit){
+            clearInterval(x)
+        }
+    },1000)
+}
+function formatTime(time) {
+    return time < 10 ? "0" + time : time;
+}
+function viewResult() {
+    const overlay = document.querySelector('.overlay');
+    overlay.innerHTML = '';
+    const resultDiv = createElement('div', { className: 'result rounded-md bg-white p-5' }, [
+        createElement('div', { className: 'cardHead text-center' }, [
+            createElement('h3', { textContent: 'Your Answers' }, [])
+        ]),
+        createElement('div', { className: 'cardBody flex flex-col' }, [
+            createElement('ul', { className: 'list' },
+                yourAnswers.map((answer) => createElement('li', { textContent: answer }, []))
+            )
+        ]),
+        createElement('div', { className: 'cardFooter flex justify-center' }, [
+            createElement('button', { textContent: 'Close', className: 'close-btn rounded-sm' }, [])
+        ])
+    ]);
+    const closeButton = resultDiv.querySelector('.close-btn');
+    closeButton.addEventListener('click', () => {
+        overlay.remove();
+        console.log('close');
+        window.location.reload()
+    });
+    overlay.appendChild(resultDiv);
 }
