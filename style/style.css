@@ -241,14 +241,25 @@ ul{
     .overlay div button{
         padding: 0.5rem 2rem;
     }
+
 }
 @media screen and (max-width: 480px) {
+    .wrapper{
+       max-height: 100%;
+        min-height: 100vh;
+    }
     .header{
         padding: 0.5rem 1rem;
     }
     .content_body{
         padding: 1rem 1rem;
         height: 100%;
+    }
+    .intro p{
+        font-size: 1rem;
+    }
+    .intro p span{
+        font-size: 1rem;
     }
     .option{
         width: 100%;
@@ -270,5 +281,14 @@ ul{
     }
     .overlay div button{
         padding: 0.5rem 1rem;
+    }
+    .card{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    .head{
+        font-size: 1rem;
     }
 }
